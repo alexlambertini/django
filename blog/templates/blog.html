@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog</title>
+    <link rel="stylesheet" href="{% static 'blog.css' %}">
+</head>
+
+<body>
+
+  <header id="topo">
+      <h1><a href="#">Blog</a></h1>
+      <nav>
+        <ul>
+          {% for menus in menus %}
+            <li><a href="#">{{ menus }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+  </header>
+
+  <main id="container">
+
+    <div class="col-2">
+      {% for posts in posts %}
+      <div class="post">
+        <h2><a href="/blog/{{ post.id }}">{{ posts.titulo }}</a></h2>
+        <span class="data">on {{ posts.data }}</span>
+        <span class="img"><img src="/media/{{ posts.imagem }}" alt=""></span>
+        <p>{{ posts.texto|slice:':300' }}...  </p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="col-2 col-2-1">
+      <div id="tags">
+        <h3>Tags</h3>
+        <ul>
+          <li><a href="#" id="fadeOut">Python</a></li>
+          <li><a href="#">Django</a></li>
+          <li><a href="#">Blender</a></li>
+          <li><a href="#">Design</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+
+
+  <footer>
+    Todos os direitos Reservados
+  </footer>
+
+</body>
+</html>
